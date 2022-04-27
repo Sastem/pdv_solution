@@ -1,9 +1,14 @@
 package com.pdv.solution.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "customer", schema = "pdvsolution_db", catalog = "")
 public class Customer {
@@ -22,6 +27,12 @@ public class Customer {
     private CategoryCustomer categoryCustomerByCategoryCustomerId;
     private Reward rewardByRewardId;
     private Store storeByStoreId;
+
+    public Customer(String email, String phone, String address) {
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
 
     @Id
     @Column(name = "customer_id")

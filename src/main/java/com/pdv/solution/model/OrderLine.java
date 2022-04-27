@@ -1,14 +1,14 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "order_line", schema = "pdvsolution_db", catalog = "")
-public class OrderLineEntity {
+public class OrderLine {
     private int orderLineId;
-    private OrderEntity orderByOrderId;
-    private ArticleEntity articleByArticleId;
+    private Order orderByOrderId;
+    private Article articleByArticleId;
 
     @Id
     @Column(name = "order_line_id")
@@ -24,7 +24,7 @@ public class OrderLineEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderLineEntity that = (OrderLineEntity) o;
+        OrderLine that = (OrderLine) o;
         return orderLineId == that.orderLineId;
     }
 
@@ -35,21 +35,21 @@ public class OrderLineEntity {
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "order_id")
-    public OrderEntity getOrderByOrderId() {
+    public Order getOrderByOrderId() {
         return orderByOrderId;
     }
 
-    public void setOrderByOrderId(OrderEntity orderByOrderId) {
+    public void setOrderByOrderId(Order orderByOrderId) {
         this.orderByOrderId = orderByOrderId;
     }
 
     @ManyToOne
     @JoinColumn(name = "article_id", referencedColumnName = "id")
-    public ArticleEntity getArticleByArticleId() {
+    public Article getArticleByArticleId() {
         return articleByArticleId;
     }
 
-    public void setArticleByArticleId(ArticleEntity articleByArticleId) {
+    public void setArticleByArticleId(Article articleByArticleId) {
         this.articleByArticleId = articleByArticleId;
     }
 }

@@ -1,11 +1,11 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "store", schema = "pdvsolution_db", catalog = "")
-public class StoreEntity {
+public class Store {
     private int storeId;
     private String name;
     private String phone;
@@ -14,7 +14,7 @@ public class StoreEntity {
     private String city;
     private String country;
     private String district;
-    private CategoryStoreEntity categoryStoreByCategoryStoreId;
+    private CategoryStore categoryStoreByCategoryStoreId;
 
     @Id
     @Column(name = "store_id")
@@ -100,7 +100,7 @@ public class StoreEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StoreEntity that = (StoreEntity) o;
+        Store that = (Store) o;
         return storeId == that.storeId &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(phone, that.phone) &&
@@ -118,11 +118,11 @@ public class StoreEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_store_id", referencedColumnName = "category_id")
-    public CategoryStoreEntity getCategoryStoreByCategoryStoreId() {
+    public CategoryStore getCategoryStoreByCategoryStoreId() {
         return categoryStoreByCategoryStoreId;
     }
 
-    public void setCategoryStoreByCategoryStoreId(CategoryStoreEntity categoryStoreByCategoryStoreId) {
+    public void setCategoryStoreByCategoryStoreId(CategoryStore categoryStoreByCategoryStoreId) {
         this.categoryStoreByCategoryStoreId = categoryStoreByCategoryStoreId;
     }
 }

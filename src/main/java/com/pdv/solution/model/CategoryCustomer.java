@@ -1,22 +1,22 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "category_store", schema = "pdvsolution_db", catalog = "")
-public class CategoryStoreEntity {
-    private int categoryId;
+@Table(name = "category_customer", schema = "pdvsolution_db", catalog = "")
+public class CategoryCustomer {
+    private int categoryCustomerId;
     private String categoryName;
 
     @Id
-    @Column(name = "category_id")
-    public int getCategoryId() {
-        return categoryId;
+    @Column(name = "category_customer_id")
+    public int getCategoryCustomerId() {
+        return categoryCustomerId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryCustomerId(int categoryCustomerId) {
+        this.categoryCustomerId = categoryCustomerId;
     }
 
     @Basic
@@ -33,13 +33,13 @@ public class CategoryStoreEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CategoryStoreEntity that = (CategoryStoreEntity) o;
-        return categoryId == that.categoryId &&
+        CategoryCustomer that = (CategoryCustomer) o;
+        return categoryCustomerId == that.categoryCustomerId &&
                 Objects.equals(categoryName, that.categoryName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(categoryId, categoryName);
+        return Objects.hash(categoryCustomerId, categoryName);
     }
 }

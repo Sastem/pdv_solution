@@ -1,4 +1,4 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Arrays;
@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "article", schema = "pdvsolution_db", catalog = "")
-public class ArticleEntity {
+public class Article {
     private int id;
     private String nom;
     private String description;
@@ -14,8 +14,8 @@ public class ArticleEntity {
     private Byte isAvailable;
     private byte[] image;
     private Integer quantity;
-    private CategoryArticleEntity categoryArticleByCategoryId;
-    private PromotionEntity promotionByPromotionId;
+    private CategoryArticle categoryArticleByCategoryId;
+    private Promotion promotionByPromotionId;
 
     @Id
     @Column(name = "id")
@@ -91,7 +91,7 @@ public class ArticleEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ArticleEntity that = (ArticleEntity) o;
+        Article that = (Article) o;
         return id == that.id &&
                 Objects.equals(nom, that.nom) &&
                 Objects.equals(description, that.description) &&
@@ -110,21 +110,21 @@ public class ArticleEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_article_id")
-    public CategoryArticleEntity getCategoryArticleByCategoryId() {
+    public CategoryArticle getCategoryArticleByCategoryId() {
         return categoryArticleByCategoryId;
     }
 
-    public void setCategoryArticleByCategoryId(CategoryArticleEntity categoryArticleByCategoryId) {
+    public void setCategoryArticleByCategoryId(CategoryArticle categoryArticleByCategoryId) {
         this.categoryArticleByCategoryId = categoryArticleByCategoryId;
     }
 
     @ManyToOne
     @JoinColumn(name = "promotion_id", referencedColumnName = "promotion_id", nullable = false)
-    public PromotionEntity getPromotionByPromotionId() {
+    public Promotion getPromotionByPromotionId() {
         return promotionByPromotionId;
     }
 
-    public void setPromotionByPromotionId(PromotionEntity promotionByPromotionId) {
+    public void setPromotionByPromotionId(Promotion promotionByPromotionId) {
         this.promotionByPromotionId = promotionByPromotionId;
     }
 }

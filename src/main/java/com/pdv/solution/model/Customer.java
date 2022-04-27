@@ -1,4 +1,4 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "customer", schema = "pdvsolution_db", catalog = "")
-public class CustomerEntity {
+public class Customer {
     private int customerId;
     private String name;
     private String email;
@@ -19,9 +19,9 @@ public class CustomerEntity {
     private String location;
     private Timestamp creationDate;
     private Timestamp lastModified;
-    private CategoryCustomerEntity categoryCustomerByCategoryCustomerId;
-    private RewardEntity rewardByRewardId;
-    private StoreEntity storeByStoreId;
+    private CategoryCustomer categoryCustomerByCategoryCustomerId;
+    private Reward rewardByRewardId;
+    private Store storeByStoreId;
 
     @Id
     @Column(name = "customer_id")
@@ -147,7 +147,7 @@ public class CustomerEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CustomerEntity that = (CustomerEntity) o;
+        Customer that = (Customer) o;
         return customerId == that.customerId &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(email, that.email) &&
@@ -169,31 +169,31 @@ public class CustomerEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_customer_id", referencedColumnName = "category_customer_id")
-    public CategoryCustomerEntity getCategoryCustomerByCategoryCustomerId() {
+    public CategoryCustomer getCategoryCustomerByCategoryCustomerId() {
         return categoryCustomerByCategoryCustomerId;
     }
 
-    public void setCategoryCustomerByCategoryCustomerId(CategoryCustomerEntity categoryCustomerByCategoryCustomerId) {
+    public void setCategoryCustomerByCategoryCustomerId(CategoryCustomer categoryCustomerByCategoryCustomerId) {
         this.categoryCustomerByCategoryCustomerId = categoryCustomerByCategoryCustomerId;
     }
 
     @ManyToOne
     @JoinColumn(name = "reward_id", referencedColumnName = "reward_id")
-    public RewardEntity getRewardByRewardId() {
+    public Reward getRewardByRewardId() {
         return rewardByRewardId;
     }
 
-    public void setRewardByRewardId(RewardEntity rewardByRewardId) {
+    public void setRewardByRewardId(Reward rewardByRewardId) {
         this.rewardByRewardId = rewardByRewardId;
     }
 
     @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
-    public StoreEntity getStoreByStoreId() {
+    public Store getStoreByStoreId() {
         return storeByStoreId;
     }
 
-    public void setStoreByStoreId(StoreEntity storeByStoreId) {
+    public void setStoreByStoreId(Store storeByStoreId) {
         this.storeByStoreId = storeByStoreId;
     }
 }

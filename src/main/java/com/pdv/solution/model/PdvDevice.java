@@ -1,13 +1,13 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "pdv_device", schema = "pdvsolution_db", catalog = "")
-public class PdvDeviceEntity {
+public class PdvDevice {
     private int pdvDeviceId;
-    private EmployeeEntity employeeByEmployeeId;
+    private Employee employeeByEmployeeId;
 
     @Id
     @Column(name = "pdv_device_id")
@@ -23,7 +23,7 @@ public class PdvDeviceEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PdvDeviceEntity that = (PdvDeviceEntity) o;
+        PdvDevice that = (PdvDevice) o;
         return pdvDeviceId == that.pdvDeviceId;
     }
 
@@ -34,11 +34,11 @@ public class PdvDeviceEntity {
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
-    public EmployeeEntity getEmployeeByEmployeeId() {
+    public Employee getEmployeeByEmployeeId() {
         return employeeByEmployeeId;
     }
 
-    public void setEmployeeByEmployeeId(EmployeeEntity employeeByEmployeeId) {
+    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
         this.employeeByEmployeeId = employeeByEmployeeId;
     }
 }

@@ -1,4 +1,4 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "provider", schema = "pdvsolution_db", catalog = "")
-public class ProviderEntity {
+public class Provider {
     private int providerId;
 
     @Id
@@ -25,7 +25,7 @@ public class ProviderEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProviderEntity that = (ProviderEntity) o;
+        Provider that = (Provider) o;
         return providerId == that.providerId;
     }
 

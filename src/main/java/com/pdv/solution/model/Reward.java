@@ -1,11 +1,11 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "reward", schema = "pdvsolution_db", catalog = "")
-public class RewardEntity {
+public class Reward {
     private int rewardId;
     private Integer rewardValue;
 
@@ -33,7 +33,7 @@ public class RewardEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RewardEntity that = (RewardEntity) o;
+        Reward that = (Reward) o;
         return rewardId == that.rewardId &&
                 Objects.equals(rewardValue, that.rewardValue);
     }

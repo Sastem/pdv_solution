@@ -1,11 +1,11 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "category_article", schema = "pdvsolution_db", catalog = "")
-public class CategoryArticleEntity {
+public class CategoryArticle {
     private int categoryArticleId;
     private String name;
     private String cssColor;
@@ -44,7 +44,7 @@ public class CategoryArticleEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CategoryArticleEntity that = (CategoryArticleEntity) o;
+        CategoryArticle that = (CategoryArticle) o;
         return categoryArticleId == that.categoryArticleId &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(cssColor, that.cssColor);

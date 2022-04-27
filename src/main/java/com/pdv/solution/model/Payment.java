@@ -1,13 +1,13 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "payment", schema = "pdvsolution_db", catalog = "")
-public class PaymentEntity {
+public class Payment {
     private int paymentId;
-    private PaymentTypeEntity paymentTypeByPaymentTypeId;
+    private PaymentType paymentTypeByPaymentTypeId;
 
     @Id
     @Column(name = "payment_id")
@@ -23,7 +23,7 @@ public class PaymentEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PaymentEntity that = (PaymentEntity) o;
+        Payment that = (Payment) o;
         return paymentId == that.paymentId;
     }
 
@@ -34,11 +34,11 @@ public class PaymentEntity {
 
     @ManyToOne
     @JoinColumn(name = "payment_type_id", referencedColumnName = "payment_type_id")
-    public PaymentTypeEntity getPaymentTypeByPaymentTypeId() {
+    public PaymentType getPaymentTypeByPaymentTypeId() {
         return paymentTypeByPaymentTypeId;
     }
 
-    public void setPaymentTypeByPaymentTypeId(PaymentTypeEntity paymentTypeByPaymentTypeId) {
+    public void setPaymentTypeByPaymentTypeId(PaymentType paymentTypeByPaymentTypeId) {
         this.paymentTypeByPaymentTypeId = paymentTypeByPaymentTypeId;
     }
 }

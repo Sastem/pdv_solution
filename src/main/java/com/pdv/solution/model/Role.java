@@ -1,11 +1,11 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "role", schema = "pdvsolution_db", catalog = "")
-public class RoleEntity {
+public class Role {
     private byte roleId;
     private String roleName;
 
@@ -33,7 +33,7 @@ public class RoleEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoleEntity that = (RoleEntity) o;
+        Role that = (Role) o;
         return roleId == that.roleId &&
                 Objects.equals(roleName, that.roleName);
     }

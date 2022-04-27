@@ -1,11 +1,11 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "promotion", schema = "pdvsolution_db", catalog = "")
-public class PromotionEntity {
+public class Promotion {
     private int promotionId;
     private String name;
     private Double percentValue;
@@ -55,7 +55,7 @@ public class PromotionEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PromotionEntity that = (PromotionEntity) o;
+        Promotion that = (Promotion) o;
         return promotionId == that.promotionId &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(percentValue, that.percentValue) &&

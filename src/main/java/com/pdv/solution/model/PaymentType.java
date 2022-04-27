@@ -1,4 +1,4 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "payment_type", schema = "pdvsolution_db", catalog = "")
-public class PaymentTypeEntity {
+public class PaymentType {
     private byte paymentTypeId;
 
     @Id
@@ -25,7 +25,7 @@ public class PaymentTypeEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PaymentTypeEntity that = (PaymentTypeEntity) o;
+        PaymentType that = (PaymentType) o;
         return paymentTypeId == that.paymentTypeId;
     }
 

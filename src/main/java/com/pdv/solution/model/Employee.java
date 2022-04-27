@@ -1,11 +1,11 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "employee", schema = "pdvsolution_db", catalog = "")
-public class EmployeeEntity {
+public class Employee {
     private int employeeId;
     private String email;
     private String phone;
@@ -14,8 +14,8 @@ public class EmployeeEntity {
     private String city;
     private String country;
     private String district;
-    private StoreEntity storeByStoreId;
-    private RoleEntity roleByRoleId;
+    private Store storeByStoreId;
+    private Role roleByRoleId;
 
     @Id
     @Column(name = "employee_id")
@@ -101,7 +101,7 @@ public class EmployeeEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EmployeeEntity that = (EmployeeEntity) o;
+        Employee that = (Employee) o;
         return employeeId == that.employeeId &&
                 Objects.equals(email, that.email) &&
                 Objects.equals(phone, that.phone) &&
@@ -119,21 +119,21 @@ public class EmployeeEntity {
 
     @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
-    public StoreEntity getStoreByStoreId() {
+    public Store getStoreByStoreId() {
         return storeByStoreId;
     }
 
-    public void setStoreByStoreId(StoreEntity storeByStoreId) {
+    public void setStoreByStoreId(Store storeByStoreId) {
         this.storeByStoreId = storeByStoreId;
     }
 
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
-    public RoleEntity getRoleByRoleId() {
+    public Role getRoleByRoleId() {
         return roleByRoleId;
     }
 
-    public void setRoleByRoleId(RoleEntity roleByRoleId) {
+    public void setRoleByRoleId(Role roleByRoleId) {
         this.roleByRoleId = roleByRoleId;
     }
 }

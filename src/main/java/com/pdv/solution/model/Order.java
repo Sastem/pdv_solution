@@ -1,19 +1,19 @@
-package model;
+package com.pdv.solution.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "order", schema = "pdvsolution_db", catalog = "")
-public class OrderEntity {
+public class Order {
     private int orderId;
     private String status;
-    private CustomerEntity customerByCustomerId;
-    private EmployeeEntity employeeByEmployeeId;
-    private PaymentEntity paymentByPaymentId;
-    private StoreEntity storeByStoreId;
-    private ProviderEntity providerByProviderId;
-    private ReductionEntity reductionByReductionId;
+    private Customer customerByCustomerId;
+    private Employee employeeByEmployeeId;
+    private Payment paymentByPaymentId;
+    private Store storeByStoreId;
+    private Provider providerByProviderId;
+    private Reduction reductionByReductionId;
 
     @Id
     @Column(name = "order_id")
@@ -39,7 +39,7 @@ public class OrderEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderEntity that = (OrderEntity) o;
+        Order that = (Order) o;
         return orderId == that.orderId &&
                 Objects.equals(status, that.status);
     }
@@ -51,61 +51,61 @@ public class OrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-    public CustomerEntity getCustomerByCustomerId() {
+    public Customer getCustomerByCustomerId() {
         return customerByCustomerId;
     }
 
-    public void setCustomerByCustomerId(CustomerEntity customerByCustomerId) {
+    public void setCustomerByCustomerId(Customer customerByCustomerId) {
         this.customerByCustomerId = customerByCustomerId;
     }
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
-    public EmployeeEntity getEmployeeByEmployeeId() {
+    public Employee getEmployeeByEmployeeId() {
         return employeeByEmployeeId;
     }
 
-    public void setEmployeeByEmployeeId(EmployeeEntity employeeByEmployeeId) {
+    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
         this.employeeByEmployeeId = employeeByEmployeeId;
     }
 
     @ManyToOne
     @JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
-    public PaymentEntity getPaymentByPaymentId() {
+    public Payment getPaymentByPaymentId() {
         return paymentByPaymentId;
     }
 
-    public void setPaymentByPaymentId(PaymentEntity paymentByPaymentId) {
+    public void setPaymentByPaymentId(Payment paymentByPaymentId) {
         this.paymentByPaymentId = paymentByPaymentId;
     }
 
     @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
-    public StoreEntity getStoreByStoreId() {
+    public Store getStoreByStoreId() {
         return storeByStoreId;
     }
 
-    public void setStoreByStoreId(StoreEntity storeByStoreId) {
+    public void setStoreByStoreId(Store storeByStoreId) {
         this.storeByStoreId = storeByStoreId;
     }
 
     @ManyToOne
     @JoinColumn(name = "provider_id", referencedColumnName = "provider_id")
-    public ProviderEntity getProviderByProviderId() {
+    public Provider getProviderByProviderId() {
         return providerByProviderId;
     }
 
-    public void setProviderByProviderId(ProviderEntity providerByProviderId) {
+    public void setProviderByProviderId(Provider providerByProviderId) {
         this.providerByProviderId = providerByProviderId;
     }
 
     @ManyToOne
     @JoinColumn(name = "reduction_id", referencedColumnName = "reduction_id")
-    public ReductionEntity getReductionByReductionId() {
+    public Reduction getReductionByReductionId() {
         return reductionByReductionId;
     }
 
-    public void setReductionByReductionId(ReductionEntity reductionByReductionId) {
+    public void setReductionByReductionId(Reduction reductionByReductionId) {
         this.reductionByReductionId = reductionByReductionId;
     }
 }

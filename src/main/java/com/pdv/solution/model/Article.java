@@ -1,9 +1,13 @@
 package com.pdv.solution.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Objects;
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "article", schema = "pdvsolution_db", catalog = "")
 public class Article {
@@ -16,6 +20,12 @@ public class Article {
     private Integer quantity;
     private CategoryArticle categoryArticleByCategoryId;
     private Promotion promotionByPromotionId;
+
+    public Article(String nom, String description, String price) {
+        this.nom = nom;
+        this.description = description;
+        this.price = price;
+    }
 
     @Id
     @Column(name = "id")
